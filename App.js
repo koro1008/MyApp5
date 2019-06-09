@@ -9,6 +9,9 @@
 import React, { Component } from 'react';
 import { Platform, StyleSheet, Text, View } from 'react-native';
 import OrderPage from './pages/OrderPage';
+import FieldPage from './pages/FieldPage';
+import { createStackNavigator, createAppContainer } from "react-navigation";
+
 
 const instructions = Platform.select({
   ios: 'Press Cmd+R to reload,\n' + 'Cmd+D or shake for dev menu',
@@ -18,26 +21,22 @@ const instructions = Platform.select({
 });
 
 type Props = {};
-export default class App extends Component<Props> {
-  render() {
-    return (
-      <View style={styles.parentView}>
-        <Text style={styles.header}>野球スタメンアプリ</Text>
-        <OrderPage/>
-      </View>
-    );
-  }
-}
 
 const styles = StyleSheet.create({
   parentView: {
     flex: 1,
     backgroundColor: '#ffffff',
-    paddingTop: 50,
-  },
-  header: {
-    height: 40,
-    fontSize: 40,
-    backgroundColor: '#009933',
   },
 });
+
+const AppNavigator = createStackNavigator(
+  {
+    Home: OrderPage,
+    Field: FieldPage
+  },
+  {
+    initialRouteName: "Home"
+  }
+);
+
+export default createAppContainer(AppNavigator);

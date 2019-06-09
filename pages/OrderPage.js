@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { StyleSheet, View } from 'react-native';
+import { StyleSheet, View ,Button} from 'react-native';
 import Register from '../components/Register';
 import OrderDisplay from '../components/OrderDisplay';
 
@@ -9,6 +9,10 @@ export default class OrderPage extends React.Component {
             <View style={styles.parentView}>
                 <Register />
                 <OrderDisplay />
+                <Button 
+                title="フィールド" 
+                onPress={() => this.props.navigation.navigate('Field')}>
+                </Button>
             </View>
         );
     }
